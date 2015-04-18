@@ -44,12 +44,12 @@ You can read complete documentations on the [woocommerce.ir](http://www.woocomme
 2. payment page
 
 == Changelog ==
-= 3.0 =
+= 4.0 =
 * بازنویسی مجدد افزونه و سازگاری با ووکامرس 2.3.x
 
 
 == Upgrade Notice ==
-= 3.0 =
+= 4.0 =
 * پس از بروزرسانی ، تنظیمات درگاه را مجددا انجام دهید
 
 
