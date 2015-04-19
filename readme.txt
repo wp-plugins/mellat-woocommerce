@@ -1,5 +1,6 @@
 === Woocommerce Mellat Bank Gateway ===
 author: ووکامرس فارسی
+Contributors: Persianscript, hannanstd
 author URI: http://www.woocommerce.ir/
 Donate link: http://www.woocommerce.ir/donate.html
 plugin URI: http://www.woocommerce.ir/plugins.html
