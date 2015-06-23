@@ -173,6 +173,7 @@ function Load_BankMellat_Gateway() {
 				if ( isset($_POST["bankmellat_submit"]) ) {
 					
 					$Amount = intval($order->order_total);
+					$Amount = apply_filters( 'woocommerce_order_amount_total_IRANIAN_gateways_before_check_currency', $Amount, $currency );
 					if ( strtolower($currency) == strtolower('IRT') || strtolower($currency) == strtolower('TOMAN')
 						|| strtolower($currency) == strtolower('Iran TOMAN') || strtolower($currency) == strtolower('Iranian TOMAN')
 						|| strtolower($currency) == strtolower('Iran-TOMAN') || strtolower($currency) == strtolower('Iranian-TOMAN')
@@ -180,6 +181,14 @@ function Load_BankMellat_Gateway() {
 						|| strtolower($currency) == strtolower('تومان') || strtolower($currency) == strtolower('تومان ایران')
 					)
 						$Amount = $Amount*10;
+					else if ( strtolower($currency) == strtolower('IRHT') )							
+						$Amount = $Amount*1000*10;
+					else if ( strtolower($currency) == strtolower('IRHR') )							
+						$Amount = $Amount*1000;
+					
+					$Amount = apply_filters( 'woocommerce_order_amount_total_IRANIAN_gateways_after_check_currency', $Amount, $currency );
+					$Amount = apply_filters( 'woocommerce_order_amount_total_IRANIAN_gateways_irr', $Amount, $currency );
+					$Amount = apply_filters( 'woocommerce_order_amount_total_Mellat_gateway', $Amount, $currency );
 			
 					
 					do_action( 'WC_BankMellat_Gateway_Payment', $order_id );
@@ -230,8 +239,7 @@ function Load_BankMellat_Gateway() {
 						else {
 							$res = explode (',',$resultStr);
 							$ResCode = $res[0];		
-							if ($ResCode == "0") {
-												
+							if ($ResCode == "0") {							
 								$Notice = __( 'در حال اتصال به بانک .....', 'woocommerce' );
 								$Notice = apply_filters( 'WC_BankMellat_Before_Send_to_Gateway_Notice', $Notice, $order_id );
 								if ( $Notice )
@@ -291,8 +299,9 @@ function Load_BankMellat_Gateway() {
 					$currency = apply_filters( 'WC_BankMellat_Currency', $currency, $order_id );
 						
 					if($order->status !='completed'){
-		
+						
 						$Amount = intval($order->order_total);
+						$Amount = apply_filters( 'woocommerce_order_amount_total_IRANIAN_gateways_before_check_currency', $Amount, $currency );
 						if ( strtolower($currency) == strtolower('IRT') || strtolower($currency) == strtolower('TOMAN')
 							|| strtolower($currency) == strtolower('Iran TOMAN') || strtolower($currency) == strtolower('Iranian TOMAN')
 							|| strtolower($currency) == strtolower('Iran-TOMAN') || strtolower($currency) == strtolower('Iranian-TOMAN')
@@ -300,6 +309,15 @@ function Load_BankMellat_Gateway() {
 							|| strtolower($currency) == strtolower('تومان') || strtolower($currency) == strtolower('تومان ایران')
 						)
 							$Amount = $Amount*10;
+						else if ( strtolower($currency) == strtolower('IRHT') )							
+							$Amount = $Amount*1000*10;
+						else if ( strtolower($currency) == strtolower('IRHR') )							
+							$Amount = $Amount*1000;
+					
+						$Amount = apply_filters( 'woocommerce_order_amount_total_IRANIAN_gateways_after_check_currency', $Amount, $currency );
+						$Amount = apply_filters( 'woocommerce_order_amount_total_IRANIAN_gateways_irr', $Amount, $currency );
+						$Amount = apply_filters( 'woocommerce_order_amount_total_Mellat_gateway', $Amount, $currency );
+			
 							
 						$terminalId = $this->terminal;
 						$userName = $this->username; 

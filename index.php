@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: درگاه پرداخت بانک ملت افزونه ووکامرس
-Version: 4.0.0
+Version: 4.0.1
 Description:  درگاه پرداخت بانک ملت برای افزونه ووکامرس
-Plugin URI: hhttp://woocommerce.ir/
+Plugin URI: http://woocommerce.ir/
 Author: ووکامرس فارسی
 Author URI: http://woocommerce.ir/
 */
